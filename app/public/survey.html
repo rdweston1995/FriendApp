@@ -9,7 +9,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-
+    <link rel='stylesheet' href='./../css/survey.css'>
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -21,8 +21,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src='https://code.jquery.com/jquery.js'></script>
 
     <title>Survey</title>
 </head>
@@ -168,14 +167,13 @@
 
 
 
-        <button type="button" class="btn btn-primary btn-lg btn-block"><i class="fa fa-check-circle"
+        <button id='submit' type="button" class="btn btn-primary btn-lg btn-block"><i class="fa fa-check-circle"
                 aria-hidden="true"></i> Submit</button>
 
     </div>
 
-    <div class='results' modal='fade'>
-        <h4 id='name'></h4>
-        <img id='img' src=''>
+    <div class='results'>
+        <h2>Results!</h2>
     </div>
 
     <footer>
@@ -183,14 +181,14 @@
             <p>
                 <a href="/api/friends">API friends List</a>
                 |
-                <a href="">Github Repo</a>
+                <a href="https://github.com/rdweston1995/FriendApp">Github Repo</a>
             </p>
         </div>
     </footer>
 
     <script type='text/javascript'>
         $('#submit').on('click', function (event) {
-            console.log("test");
+            //console.log("test");
             event.preventDefault();
 
             function validateForm() {
@@ -222,11 +220,27 @@
                     ]
                 };
 
-                $.post("/api/friends", userData, function (data) {
-                    $("#name").text(data.name);
-                    $("#img").attr("src", data.photo);
+                $("#name").val('');
+                $("#photoURL").val('');
+                $("#question1").val('');
+                $("#question2").val('');
+                $("#question3").val('');
+                $("#question4").val('');
+                $("#question5").val('');
+                $("#question6").val('');
+                $("#question7").val('');
+                $("#question8").val('');
+                $("#question9").val('');
+                $("#question10").val('');
 
-                    $(".results").modal("toggle");
+                $.post("/api/friends", userData, function (data) {
+                    //console.log(userData);
+
+                    //console.log(data.name);
+                    
+                    $(".results").html("<h2>Results!</h2><hr><h4>" + data.name + "</h4><img src='" + data.photo + "' alt='result pic'>");
+                      
+                     
                 });
             } else {
                 alert("Please finish the survey first!");
