@@ -6,7 +6,7 @@ var app = express();
 //var htmlRoutes = require("./app/routing/htmlRoutes.js")(app);
 var PORT = process.env.PORT || 3000;
 
-app.use(express.static(__dirmame + '/app/css'));
+app.use(express.static(__dirname + '/app/css'));
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
