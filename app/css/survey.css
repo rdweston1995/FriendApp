@@ -15,4 +15,14 @@ h2{
 .results{
     margin: 50px 0px 0px 0px;
     text-align:center;
+    font-size: 65px;
+}
+
+.resultImg{
+    width: 50%;
+    height: 50%;
+}
+
+.resultName{
+    font-size: 50px;
 }

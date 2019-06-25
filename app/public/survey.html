@@ -175,7 +175,6 @@
     <div class='results'>
         <h2>Results!</h2>
     </div>
-
     <footer>
         <div>
             <p>
@@ -234,11 +233,7 @@
                 $("#question10").val('');
 
                 $.post("/api/friends", userData, function (data) {
-                    //console.log(userData);
-
-                    //console.log(data.name);
-                    
-                    $(".results").html("<h2>Results!</h2><hr><h4>" + data.name + "</h4><img src='" + data.photo + "' alt='result pic'>");
+                    $(".results").html("<h2>Results!</h2><hr><h4 class='resultName'>" + data.name + "</h4><img class='resultImg' src='" + data.photo + "' alt='result pic'>");
                       
                      
                 });
